@@ -19,7 +19,7 @@ class _LocalStateState extends State<LocalState> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           PieChart(
-            _getInitialData(),
+            _getChartData(),
             swapAnimationDuration: Duration(milliseconds: 500),
           ),
           Column(
@@ -44,7 +44,7 @@ class _LocalStateState extends State<LocalState> {
     );
   }
 
-  PieChartData _getInitialData() {
+  PieChartData _getChartData() {
     return PieChartData(
       sections: [
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),

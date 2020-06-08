@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 class ProviderState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //Multiprovider
     return ChangeNotifierProvider<DartSelector>(
       create: (context) => DartSelector(initialValue: 10.0),
       child: Scaffold(
@@ -28,13 +29,13 @@ class MyChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: PieChart(
-        _getInitialData(context.watch<DartSelector>().dartValue),
+        _getChartData(context.watch<DartSelector>().dartValue),
         swapAnimationDuration: Duration(milliseconds: 500),
       ),
     );
   }
 
-  PieChartData _getInitialData(double dartValue) {
+  PieChartData _getChartData(double dartValue) {
     return PieChartData(
       sections: [
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),

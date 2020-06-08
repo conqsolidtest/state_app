@@ -45,19 +45,19 @@ class MyChart extends StatelessWidget {
           builder: (ctx, AsyncSnapshot<double> snapshot) {
             if (snapshot.hasData) {
               return PieChart(
-                _getInitialData(snapshot.data),
+                _getChartData(snapshot.data),
                 swapAnimationDuration: Duration(milliseconds: 500),
               );
             }
             return PieChart(
-              _getInitialData(0),
+              _getChartData(0),
               swapAnimationDuration: Duration(milliseconds: 500),
             );
           }),
     );
   }
 
-  PieChartData _getInitialData(double dartValue) {
+  PieChartData _getChartData(double dartValue) {
     return PieChartData(
       sections: [
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),
