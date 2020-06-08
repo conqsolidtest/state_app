@@ -1,5 +1,5 @@
-import 'package:conq_state_app/pages/custom_bloc/bloc_provider.dart';
-import 'package:conq_state_app/pages/custom_bloc/data_bloc.dart';
+import 'package:state_app/pages/custom_bloc/bloc_provider.dart';
+import 'package:state_app/pages/custom_bloc/data_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

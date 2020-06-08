@@ -1,4 +1,4 @@
-import 'package:conq_state_app/pages/flutterbloc/data_flutter_bloc.dart';
+import 'package:state_app/pages/flutterbloc/data_flutter_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

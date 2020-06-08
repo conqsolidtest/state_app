@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:conq_state_app/pages/custom_bloc/bloc.dart';
+import 'package:state_app/pages/custom_bloc/bloc.dart';
 
 class DataBloc extends Bloc {
   final double initialValue;

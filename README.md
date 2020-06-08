@@ -1,4 +1,4 @@
-# conq_state_app
+# state_app
 
 A new Flutter project.
 

@@ -1,4 +1,4 @@
-import 'package:conq_state_app/pages/custom_bloc/bloc.dart';
+import 'package:state_app/pages/custom_bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 class BlocProvider<T extends Bloc> extends StatefulWidget {

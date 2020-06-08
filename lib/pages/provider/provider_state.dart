@@ -1,4 +1,4 @@
-import 'package:conq_state_app/pages/provider/dart_selector.dart';
+import 'package:state_app/pages/provider/dart_selector.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
