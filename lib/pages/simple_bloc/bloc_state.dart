@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:conq_state_app/pages/bloc/data_bloc.dart';
+import 'package:conq_state_app/pages/simple_bloc/data_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

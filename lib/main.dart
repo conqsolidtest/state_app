@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:conq_state_app/pages/bloc/bloc_state.dart';
 import 'package:conq_state_app/pages/custom_bloc/custom_bloc.dart';
 import 'package:conq_state_app/pages/flutterbloc/flutter_bloc_state.dart';
-import 'package:conq_state_app/pages/localstate/local_state.dart';
+import 'package:conq_state_app/pages/local_state/local_state.dart';
 import 'package:conq_state_app/pages/provider/provider_state.dart';
+import 'package:conq_state_app/pages/simple_bloc/simple_bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
