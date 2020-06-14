@@ -1,15 +1,15 @@
-import 'package:state_app/pages/flutterbloc/data_flutter_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:state_app/pages/flutterbloc/data_flutter_bloc.dart';
 
 class FlutterBlocState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Flutter Bloc State')),
+      appBar: AppBar(title: const Text('Flutter Bloc State')),
       body: BlocProvider<DataFlutterBloc>(
-        create: (context) => DataFlutterBloc(),
+        create: (BuildContext context) => DataFlutterBloc(),
         child: Center(
           child: Column(
             children: <Widget>[MyChart(), MySlider()],
@@ -25,10 +25,10 @@ class MyChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DataFlutterBloc, double>(
-      builder: (context, state) {
+      builder: (BuildContext context, double state) {
         return PieChart(
           _getChartData(state),
-          swapAnimationDuration: Duration(milliseconds: 500),
+          swapAnimationDuration: const Duration(milliseconds: 500),
         );
       },
     );
@@ -37,7 +37,7 @@ class MyChart extends StatelessWidget {
   PieChartData _getChartData(double dartValue) {
     return PieChartData(
       pieTouchData: PieTouchData(enabled: true),
-      sections: [
+      sections: <PieChartSectionData>[
         PieChartSectionData(value: 10, color: Colors.green, title: 'C#'),
         PieChartSectionData(value: 15, color: Colors.teal, title: 'Java'),
         PieChartSectionData(value: 20, color: Colors.blueGrey, title: 'Go'),
@@ -60,9 +60,8 @@ class _MySliderState extends State<MySlider> {
   @override
   Widget build(BuildContext context) {
     _myBloc = BlocProvider.of<DataFlutterBloc>(context);
-
     return BlocBuilder<DataFlutterBloc, double>(
-      builder: (context, state) {
+      builder: (BuildContext context, double state) {
         return Container(
           child: Slider(
             divisions: 99,
@@ -71,7 +70,7 @@ class _MySliderState extends State<MySlider> {
             min: 0,
             max: 100,
             value: state,
-            onChanged: (sliderValue) {
+            onChanged: (double sliderValue) {
               _myBloc.add(SetData(newDataValue: sliderValue));
             },
           ),

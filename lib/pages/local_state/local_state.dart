@@ -13,14 +13,14 @@ class _LocalStateState extends State<LocalState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Local State Management'),
+        title: const Text('Local State Management'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           PieChart(
             _getChartData(),
-            swapAnimationDuration: Duration(milliseconds: 500),
+            swapAnimationDuration: const Duration(milliseconds: 500),
           ),
           Column(
             children: <Widget>[
@@ -31,7 +31,7 @@ class _LocalStateState extends State<LocalState> {
                 min: 0,
                 max: 100,
                 value: _dartValue,
-                onChanged: (sliderValue) {
+                onChanged: (double sliderValue) {
                   setState(() {
                     _dartValue = sliderValue;
                   });
@@ -46,7 +46,7 @@ class _LocalStateState extends State<LocalState> {
 
   PieChartData _getChartData() {
     return PieChartData(
-      sections: [
+      sections: <PieChartSectionData>[
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),
         PieChartSectionData(value: 2, color: Colors.teal, title: 'Java'),
         PieChartSectionData(value: 3, color: Colors.blueGrey, title: 'Go'),

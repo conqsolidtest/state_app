@@ -1,10 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
 import 'package:state_app/pages/custom_bloc/custom_bloc.dart';
 import 'package:state_app/pages/flutterbloc/flutter_bloc_state.dart';
 import 'package:state_app/pages/local_state/local_state.dart';
 import 'package:state_app/pages/provider/provider_state.dart';
 import 'package:state_app/pages/simple_bloc/simple_bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:state_app/pages/weather_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,29 +44,30 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final _pageController = PageController();
+  final PageController _pageController = PageController();
   int _index = 0;
 
   @override
   Widget build(BuildContext context) {
-    var widgetList = _getPages();
+    final List<WidgetPage> widgetList = _getPages();
 
     return Scaffold(
       bottomNavigationBar: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(
+          children: List<Expanded>.generate(
             widgetList.length,
-            (index) => Expanded(
+            (int index) => Expanded(
                 flex: 1,
                 child: InkWell(
                   onTap: () {
                     print(index);
                     _pageController.animateToPage(index,
-                        duration: Duration(seconds: 1), curve: Curves.ease);
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.ease);
                   },
                   child: Container(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20),
                     alignment: Alignment.topCenter,
                     height: 100,
                     decoration: BoxDecoration(color: Colors.teal),
@@ -88,32 +90,33 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       body: PageView.builder(
-        onPageChanged: (index) {
+        onPageChanged: (int index) {
           setState(() {
             _index = index;
           });
         },
         controller: _pageController,
         itemCount: widgetList.length,
-        itemBuilder: (context, index) => widgetList[index].child,
+        itemBuilder: (BuildContext context, int index) =>
+            widgetList[index].child,
       ),
     );
   }
 
   List<WidgetPage> _getPages() {
-    return [
+    return <WidgetPage>[
       WidgetPage('Local State', LocalState()),
       WidgetPage('Simple Bloc', SimpleBloc()),
       WidgetPage('Custom Bloc', CustomBloc()),
       WidgetPage('Flutter Bloc', FlutterBlocState()),
-      WidgetPage('Provider State', ProviderState())
+      WidgetPage('Provider State', ProviderState()),
+      WidgetPage('Weather Page', const WeatherPage())
     ];
   }
 }
 
 class WidgetPage {
+  WidgetPage(this.text, this.child);
   final String text;
   final Widget child;
-
-  WidgetPage(this.text, this.child);
 }

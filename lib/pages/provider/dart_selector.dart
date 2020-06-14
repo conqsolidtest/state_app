@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 
 class DartSelector with ChangeNotifier {
-  double value;
-  DartSelector({initialValue = 10.0}) {
-    this.value = initialValue;
+  DartSelector({double initialValue = 10.0}) {
+    value = initialValue;
   }
-  get dartValue => value;
+  double value;
+  double get dartValue => value;
 
   set dartValue(double v) {
     if (v != value) {

@@ -1,17 +1,17 @@
-import 'package:state_app/pages/provider/dart_selector.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_app/pages/provider/dart_selector.dart';
 
 class ProviderState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Multiprovider
     return ChangeNotifierProvider<DartSelector>(
-      create: (context) => DartSelector(initialValue: 10.0),
+      create: (BuildContext context) => DartSelector(initialValue: 10.0),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Provider State Management'),
+          title: const Text('Provider State Management'),
         ),
         body: Center(
           child: Column(
@@ -27,17 +27,18 @@ class ProviderState extends StatelessWidget {
 class MyChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('My chart provider state build');
     return Container(
       child: PieChart(
         _getChartData(context.watch<DartSelector>().dartValue),
-        swapAnimationDuration: Duration(milliseconds: 500),
+        swapAnimationDuration: const Duration(milliseconds: 500),
       ),
     );
   }
 
   PieChartData _getChartData(double dartValue) {
     return PieChartData(
-      sections: [
+      sections: <PieChartSectionData>[
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),
         PieChartSectionData(value: 2, color: Colors.teal, title: 'Java'),
         PieChartSectionData(value: 3, color: Colors.blueGrey, title: 'Go'),
@@ -52,7 +53,7 @@ class MyChart extends StatelessWidget {
 class MySlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var value = context.watch<DartSelector>().dartValue;
+    final double value = context.watch<DartSelector>().dartValue;
     return Container(
       child: Column(
         children: <Widget>[
@@ -63,7 +64,7 @@ class MySlider extends StatelessWidget {
             min: 0,
             max: 100,
             value: value,
-            onChanged: (sliderValue) {
+            onChanged: (double sliderValue) {
               context.read<DartSelector>().dartValue = sliderValue;
             },
           ),

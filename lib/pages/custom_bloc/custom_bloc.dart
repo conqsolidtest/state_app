@@ -7,7 +7,7 @@ class CustomBloc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Custom Bloc')),
+        appBar: AppBar(title: const Text('Custom Bloc')),
         body: BlocProvider<DataBloc>(
           bloc: DataBloc(1),
           child: Column(
@@ -24,20 +24,20 @@ class CustomBloc extends StatelessWidget {
 class MyChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<DataBloc>(context);
+    final DataBloc bloc = BlocProvider.of<DataBloc>(context);
     return StreamBuilder<double>(
         stream: bloc.dataValueStream,
-        builder: (ctx, AsyncSnapshot<double> snapshot) {
+        builder: (BuildContext ctx, AsyncSnapshot<double> snapshot) {
           return PieChart(
             _getChartData(bloc.dataValue),
-            swapAnimationDuration: Duration(milliseconds: 500),
+            swapAnimationDuration: const Duration(milliseconds: 500),
           );
         });
   }
 
   PieChartData _getChartData(double dartValue) {
     return PieChartData(
-      sections: [
+      sections: <PieChartSectionData>[
         PieChartSectionData(value: 1, color: Colors.green, title: 'C#'),
         PieChartSectionData(value: 2, color: Colors.teal, title: 'Java'),
         PieChartSectionData(value: 3, color: Colors.blueGrey, title: 'Go'),
@@ -52,14 +52,14 @@ class MyChart extends StatelessWidget {
 class MySlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<DataBloc>(context);
+    final DataBloc bloc = BlocProvider.of<DataBloc>(context);
 
     return Container(
       child: Column(
         children: <Widget>[
           StreamBuilder<double>(
               stream: bloc.dataValueStream,
-              builder: (context, snapshot) {
+              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
                 return Slider(
                   divisions: 99,
                   activeColor: Colors.blue,
@@ -67,7 +67,7 @@ class MySlider extends StatelessWidget {
                   min: 0,
                   max: 100,
                   value: bloc.dataValue,
-                  onChanged: (sliderValue) {
+                  onChanged: (double sliderValue) {
                     bloc.setDataValue(sliderValue);
                   },
                 );

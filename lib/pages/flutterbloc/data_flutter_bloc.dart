@@ -7,29 +7,25 @@ class DataFlutterBloc extends Bloc<DataOperation, double> {
   double get initialState => 10.0;
 
   @override
-  Stream<double> mapEventToState(DataOperation event) async*{
-    if(event is SetData){
+  Stream<double> mapEventToState(DataOperation event) async* {
+    if (event is SetData) {
       yield event.newDataValue;
     }
   }
-  
-  
 }
 
 abstract class DataOperation {}
 
 class SetData extends DataOperation {
-  double newDataValue;
-
   SetData({this.newDataValue});
+  double newDataValue;
 }
 
 abstract class DataState {}
 
 class DataFetched extends DataState {
-  final double value;
-
   DataFetched(this.value);
+  final double value;
 }
 
 class DataInitial extends DataState {}

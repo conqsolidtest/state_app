@@ -1,11 +1,11 @@
-import 'package:state_app/pages/custom_bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:state_app/pages/custom_bloc/bloc.dart';
 
 class BlocProvider<T extends Bloc> extends StatefulWidget {
+  const BlocProvider({Key key, this.bloc, this.child}) : super(key: key);
+
   final Widget child;
   final T bloc;
-
-  const BlocProvider({Key key, this.bloc, this.child}) : super(key: key);
 
   static T of<T extends Bloc>(BuildContext context) {
     final BlocProvider<T> provider =
@@ -14,10 +14,10 @@ class BlocProvider<T extends Bloc> extends StatefulWidget {
   }
 
   @override
-  _State createState() => _State();
+  _State<T> createState() => _State<T>();
 }
 
-class _State extends State<BlocProvider> {
+class _State<T extends Bloc> extends State<BlocProvider<T>> {
   @override
   Widget build(BuildContext context) {
     return widget.child;

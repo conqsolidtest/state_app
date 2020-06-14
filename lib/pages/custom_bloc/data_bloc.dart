@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:state_app/pages/custom_bloc/bloc.dart';
 
 class DataBloc extends Bloc {
+  DataBloc(this.initialValue) {
+    _dataValue = initialValue;
+  }
   final double initialValue;
-  final _dataValueController = StreamController<double>.broadcast();
+  final StreamController<double> _dataValueController =
+      StreamController<double>.broadcast();
 
   double _dataValue;
-
-  DataBloc(this.initialValue) {
-    this._dataValue = initialValue;
-  }
 
   Stream<double> get dataValueStream => _dataValueController.stream;
   double get dataValue => _dataValue;
